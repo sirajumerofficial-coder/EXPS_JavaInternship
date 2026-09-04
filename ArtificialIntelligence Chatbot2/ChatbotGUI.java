@@ -10,11 +10,11 @@ public class ChatbotGUI {
     JTextField inputField;
     JButton sendButton;
 
-    Textprocessor processor;
+    TextProcessor processor;
     DecisionEngine engine;
 
 
-    public ChatbotGUI(Textprocessor processor,
+    public ChatbotGUI(TextProcessor processor,
                       DecisionEngine engine) {
 
         this.processor = processor;

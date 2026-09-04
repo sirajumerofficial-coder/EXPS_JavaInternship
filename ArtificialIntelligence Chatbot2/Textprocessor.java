@@ -1,19 +1,20 @@
-public class Textprocessor {
+public class TextProcessor {
 
+    // Cleans user input by lowercasing and removing extra spaces/punctuation
     public String cleanText(String message) {
+        if (message == null) {
+            return "";
+        }
 
-        // Lowercase
-        String cleanText = message.toLowerCase();
+        // Convert to lowercase
+        String cleaned = message.toLowerCase().trim();
 
-        // Extra spaces remove
-        cleanText = cleanText.trim();
+        // Remove special characters/punctuation
+        cleaned = cleaned.replaceAll("[^a-z0-9 ]", "");
 
-        // Punctuation remove
-        cleanText = cleanText.replaceAll("[^a-z0-9 ]", "");
+        // Convert multiple spaces to a single space
+        cleaned = cleaned.replaceAll("\\s+", " ");
 
-        // Multiple spaces ko single space
-        cleanText = cleanText.replaceAll("\\s+", " ");
-
-        return cleanText;
+        return cleaned;
     }
 }
