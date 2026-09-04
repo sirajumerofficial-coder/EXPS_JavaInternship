@@ -1,5 +1,4 @@
 public class Student {
-
     private String[] subjects;
     private int[] marks;
 
@@ -16,16 +15,16 @@ public class Student {
         return marks;
     }
 
-    // Average nikalna
+    // Calculates average of all subjects
     public double getAverage() {
         int sum = 0;
         for (int m : marks) {
             sum += m;
         }
-        return sum / (double) marks.length;
+        return (double) sum / marks.length;
     }
 
-    // Highest marks nikalna
+    // Finds maximum marks obtained
     public int getHighest() {
         int highest = marks[0];
         for (int m : marks) {
@@ -36,7 +35,7 @@ public class Student {
         return highest;
     }
 
-    // Lowest marks nikalna
+    // Finds minimum marks obtained
     public int getLowest() {
         int lowest = marks[0];
         for (int m : marks) {

@@ -1,6 +1,5 @@
 import java.util.Scanner;
 
-
 public class Main {
 
     public static void main(String[] args) {
@@ -8,36 +7,30 @@ public class Main {
         Grade grade = new Grade();
         Report report = new Report();
 
-      
-        
-
-
         String[] subjects = {"Maths", "Physics", "English", "Computer", "Urdu"};
         int[] marksArr = new int[subjects.length];
 
-        System.out.println("\n------ Student Grades ------");
+        System.out.println("\n------ Student Marks Entry ------");
 
-        // Input
         for (int i = 0; i < subjects.length; i++) {
-            System.out.print("Enter marks in " + subjects[i] + ": ");
-            marksArr[i] = sc.nextInt();
+            System.out.print("Enter marks for " + subjects[i] + " (0-100): ");
+            int input = sc.nextInt();
+
+            // Simple validation for marks range
+            while (input < 0 || input > 100) {
+                System.out.print("Invalid! Enter valid marks (0-100) for " + subjects[i] + ": ");
+                input = sc.nextInt();
+            }
+
+            marksArr[i] = input;
         }
 
+        // Create student object with collected data
         Student student = new Student(subjects, marksArr);
 
-        // Grades
-        System.out.println("\n------ Grades ------");
-        for (int i = 0; i < subjects.length; i++) {
-            System.out.print(subjects[i] + ": ");
-            System.out.println(grade.checkGrade(marksArr[i]));
-        }
+        // Display final report
+        report.displayReport(student, subjects, grade);
 
-        // Result
-        System.out.println("\n------ Result ------");
-        System.out.println("Average Marks: " + student.getAverage());
-        System.out.println("Highest Marks: " + student.getHighest());
-        System.out.println("Lowest Marks: " + student.getLowest());
-         report.displayReport(student, subjects, grade);
         sc.close();
     }
 }
